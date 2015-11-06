@@ -1,9 +1,11 @@
+# check_galera_status.pl
+
 This script connects to a MySQL of MariaDB database servers and gets information about the Galera Cluster (http://galeracluster.com/) to use that information to determine the health of the cluster and then return the health status in a format that nagios understands.
 
 This script needs a database user, preferbly one with only USAGE rights. Here's an example:
     GRANT USAGE ON *.* TO 'myuser'@'myhost' IDENTIFIED BY 'mypassword';
 
-# Example nagios config
+## Example nagios config
 
 
 ```define service {
@@ -24,7 +26,7 @@ This script needs a database user, preferbly one with only USAGE rights. Here's 
   use     service-global
 }```
 
-# Notes
+## Notes
 Martijn Smit <martijn@lostdomain.org>
 
 06-11-2015: First commit
