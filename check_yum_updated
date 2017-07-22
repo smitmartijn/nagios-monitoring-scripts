@@ -1,0 +1,11 @@
+# Check whether there's been a yum update in the last 90 days
+export LAST_UPDATED_TS=`rpm -qa --queryformat '%{installtime} (%{installtime:date}) %{name}\n' | sort -n | tail -n 1 | awk -F " " '{print $1}'`
+export CURRENT_TS=`date +%s`
+export DIFFERENCE_TS=$((CURRENT_TS - LAST_UPDATED_TS))
+
+if [ $DIFFERENCE_TS -ge $((60 * 60 * 24 * 90)) ];
+then
+  echo "UPDATES CRITICAL - Not updated in 90 days!"
+else
+  echo "UPDATES OK - Updated in the last 90 days!"
+fi
