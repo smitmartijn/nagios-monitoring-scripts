@@ -249,7 +249,7 @@ if ($results{'wsrep_cluster_size'} <= $amountOfNodesCrit)
 }
 
 # check the receiving queue..if this is larger than 0.5, the node is having load issues and is pauzing dataflows (not good)
-if ($results{'wsrep_local_recv_queue_avg'} gt 0.5)
+if ($results{'wsrep_local_recv_queue_avg'} > 0.5)
 {
   print "Warning: recv_queue_avg is higher than 0.5: ".$results{'wsrep_local_recv_queue_avg'}.", cluster_status: ".$results{'wsrep_cluster_status'}."\n";
   exit($returnCodes{'Warning'});
